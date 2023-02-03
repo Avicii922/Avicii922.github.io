@@ -26,7 +26,7 @@
 }
 
 body{
-    background-color: #E0E0E0;
+    background-color: LightBlue;
     /* 禁止鼠标选择文字 */
     user-select: none; 
 }
