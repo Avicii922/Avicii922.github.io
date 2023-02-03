@@ -250,7 +250,7 @@ a:hover{
     /* Main-1 开源作品 */
     #main-1{
         width: 320px;
-        border-radius: 35px 35px 0px 0px;
+        border-radius: 35px 35px 35px 35px;
         margin-right: auto;
         margin-left: auto;
     }
@@ -259,11 +259,12 @@ a:hover{
         width: 320px;
         margin-right: auto;
         margin-left: auto;
+        border-radius: 35px 35px 35px 35px;
     }
     /* Main-3 个人网站 */
     #main-3{
         width: 320px;
-        border-radius: 3px 3px 35px 35px ;
+        border-radius: 35px 35px 35px 35px ;
         margin-right: auto;
         margin-left: auto;
     }
