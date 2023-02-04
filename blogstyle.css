@@ -4,6 +4,7 @@
 }
 body {
   background-image:url("biginvector.jpg");
+  background-size:cover;
 }
 .navtab {
   width:20%;
