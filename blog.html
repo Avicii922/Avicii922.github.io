@@ -6,51 +6,45 @@
 	<link rel="stylesheet" href="blogstyle.css">
   </head>
   <body>
-	<div class="nav">
-	  <a href="blog.html"><div id="nav1" class="navtab">全部</div></a>
-	  <a href="android.html"><div id="nav2" class="navtab">Android</div></a>
-	  <a href="windows.html"><div id="nav3" class="navtab">Windows</div></a>
-	  <a href="others.html"><div id="nav4" class="navtab">其他资源</div></a>
-	  <a href="index.html"><div id="nav5" class="navtab">关于作者</div></a>
-        </div>
-        <div class="dropdown" id="dnav1">
-          <div class="dd">搜索</div>
-          <div class="dd">最新</div>
-        </div>
-        <div class="dropdown" id="dnav2">
-          <div class="dd">学习</div>
-          <div class="dd">娱乐</div>
-          <div class="dd">GP搬运</div>
-          <div class="dd">其他</div>
-        </div>
-        <div class="dropdown" id="dnav3">
-          <div class="dd"></div>
-          <div class="dd"></div>
-          <div class="dd"></div>
-          <div class="dd"></div>
-        </div>
-        <div class="dropdown" id="dnav4">
-          <div class="dd"></div>
-          <div class="dd"></div>
-          <div class="dd"></div>
-          <div class="dd"></div>
-        </div>
-        <script>
-          var nav=document.getElementsByClassName("navtab");
-          var ndd=document.getElementsByClassName("dd");
-          function show(i) {
-            ndd[i].style.display="block";
-          };
-          function hide(i) {
-            ndd[i].style.display="none";
-          };
-          for (i,i<5,i++) {
-            nav[i].addEventListener(onmouseover,show(i));
-            nav[i].addEventListener(onmouseoff,hide(i));
-          };
-        </script>
-	<h1 id="welcome">Welcome!</h1>
-	
-	
+    <li>
+      <a href="https://blog.csdn.net/Menkongkong/article/details/106201447">首页</a>
+      <div>
+        <ul>
+          <li><a href="">1</a></li>
+          <li><a href="">2</a></li>
+          <li><a href="">3</a></li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <a href="">Android</a>
+      <div>
+        <ul>
+          <li><a href="">1</a></li>
+          <li><a href="">2</a></li>
+          <li><a href="">3</a></li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <a href="">Windows</a>
+      <div>
+        <ul>
+          <li><a href="">1</a></li>
+          <li><a href="">2</a></li>
+          <li><a href="">3</a></li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <a href="">关于作者</a>
+      <div>
+        <ul>
+          <li><a href="">1</a></li>
+          <li><a href="">2</a></li>
+          <li><a href="">3</a></li>
+        </ul>
+      </div>
+    </li>
   </body>
 </html>
