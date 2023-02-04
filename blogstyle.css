@@ -36,10 +36,12 @@ a:hover {
 
 .dropdown {
   background-color:White;
+  width:20%
 }
 #dnav1 {
   position:fixed;
   top:60px;
+  left:0;
 }
 #dnav2 {
   position:fixed;
