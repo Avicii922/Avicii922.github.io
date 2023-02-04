@@ -34,6 +34,29 @@ a:hover {
   color:Orange;
 }
 
+.dropdown {
+  background-color:White;
+}
+#dnav1 {
+  position:fixed;
+  top:60px;
+}
+#dnav2 {
+  position:fixed;
+  top:60px;
+  left:20%;
+}
+#dnav3 {
+  position:fixed;
+  top:60px;
+  left:40%
+}
+#dnav4 {
+  position:fixed;
+  top:60px;
+  left:60%;
+}
+
 #welcome {
   text-align:center;
   text-shadow:1px 5px 10px LightBlue;
@@ -41,3 +64,5 @@ a:hover {
   top:100px;
   font-size:200px；
 }
+
+
