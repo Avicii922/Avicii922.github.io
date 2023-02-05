@@ -5,7 +5,7 @@
 }
 body {
   background-color:Black;
-  background-image:url("https://i0.hdslb.com/bfs/new_dyn/b989a008b34c7d04d0a85cc891342772340911657.jpg@2201w.webp");
+  background-image:url("biginvector.jpg");
   background-size:cover;
   background-repeat:no-repeat;
 }
@@ -20,6 +20,7 @@ a:hover {
 }
 li {
   list-style:none;
+  line-height:60px;
 }
 .ndd {
   border:1px solid LightBlue;
@@ -29,6 +30,7 @@ li {
   top:60px;
   left:0;
   z-index:10;
+  width:20%;
 }
 #ndd2 {
   left:20%;
@@ -52,7 +54,6 @@ li {
 }
 
 #welcome {
-  text-align:center;
   text-shadow:1px 5px 10px LightBlue;
   position:relative;
   top:40%;
