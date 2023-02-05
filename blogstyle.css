@@ -7,22 +7,6 @@ body {
   background-size:cover;
   background-repeat:no-repeat;
 }
-.navtab {
-  width:20%;
-  float:left;
-  height:60px;
-  text-align:center;
-  line-height:60px;
-}
-.nav {
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:60px;
-  background-color:LightBlue;
-  border-radius:0px 0px 40px 40px;
-}
 a:link {
   color:Black;
 }
@@ -33,38 +17,13 @@ a:hover {
   color:Orange;
 }
 
-.dropdown {
-  background-color:White;
-  width:20%;
-  display:none;
-}
-#dnav1 {
-  position:fixed;
-  top:60px;
-  left:0;
-}
-#dnav2 {
-  position:fixed;
-  top:60px;
-  left:20%;
-}
-#dnav3 {
-  position:fixed;
-  top:60px;
-  left:40%;
-}
-#dnav4 {
-  position:fixed;
-  top:60px;
-  left:60%;
-}
+
 
 #welcome {
   text-align:center;
   text-shadow:1px 5px 10px LightBlue;
   position:relative;
   top:40%;
-  font-size:2000px；
 }
 
 
