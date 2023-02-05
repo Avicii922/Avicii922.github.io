@@ -18,6 +18,9 @@ a:visited {
 a:hover {
   color:Orange;
 }
+li {
+  list-style:none;
+}
 .ndd {
   border:1px solid LightBlue;
   color:White;
