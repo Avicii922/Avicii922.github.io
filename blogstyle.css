@@ -8,10 +8,10 @@ body {
   background-repeat:no-repeat;
 }
 a:link {
-  color:Black;
+  color:White;
 }
 a:visited {
-  color:DarkBlue;
+  color:LightBlue;
 }
 a:hover {
   color:Orange;
