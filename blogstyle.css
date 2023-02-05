@@ -16,7 +16,27 @@ a:visited {
 a:hover {
   color:Orange;
 }
-
+.ndd {
+  border:1px solid LightBlue;
+  color:White;
+  border-radius:10px;
+  position:fixed;
+  top:60px;
+  left:0;
+  z-index:10;
+}
+#ndd2 {
+  left:20%;
+}
+#ndd3 {
+  left:40%;
+}
+#ndd4 {
+  left:60%;
+}
+#ndd5 {
+  left:80%;
+}
 
 
 #welcome {
