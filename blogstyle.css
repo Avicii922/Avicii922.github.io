@@ -2,6 +2,7 @@
   margin:0;
   padding:0;
   text-align:center;
+  overflow:hidden;
 }
 body {
   background-color:Black;
@@ -36,6 +37,19 @@ li {
 #nli1:hover #ndd1 {
   height:100px;
 }
+#nli2:hover #ndd2 {
+  height:100px;
+}
+#nli3:hover #ndd3 {
+  height:100px;
+}
+#nli4:hover #ndd4 {
+  height:100px;
+}
+#nli5:hover #ndd5 {
+  height:100px;
+}
+
 #ndd2 {
   left:20%;
 }
