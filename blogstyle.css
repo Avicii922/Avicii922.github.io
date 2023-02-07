@@ -35,6 +35,7 @@ li {
   width:20%;
   height:0px;
   transition:1s border,0.8s height,0.8s background-color;
+  transition-timing-function: ease-out;
 }
 #nli1:hover #ndd1 {
   height:200px;
@@ -94,7 +95,7 @@ li {
   position:relative;
   top:40%;
   color: yellow;
-  font-size: xx-large;
+  font-size: 200%
 }
 
 
