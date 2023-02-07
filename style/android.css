@@ -6,7 +6,7 @@
 }
 body {
   background-color:black;
-  background-image:url("biginvector.jpg");
+  background-image:url("../biginvector.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -84,6 +84,7 @@ li {
   width:20%;
   height:60px;
   float:left;
+  background-color:rgba(251,3,100,0.6);
 }
 .nav {
   width:100%;
