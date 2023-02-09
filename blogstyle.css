@@ -34,7 +34,7 @@ li {
   z-index:10;
   width:20%;
   height:0px;
-  transition:1s border,0.8s height,0.8s background-color;
+  transition:0.5s border,0.6s height,0.6s background-color;
   transition-timing-function: ease-out;
 }
 #nli1:hover #ndd1 {
@@ -95,8 +95,6 @@ li {
   text-shadow:1px 5px 10px LightBlue;
   position:relative;
   top:40%;
-  color: yellow;
-  font-size: 200%
 }
 
 
