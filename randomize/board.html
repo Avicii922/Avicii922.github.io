@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head>
+    <title>board</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background-color: black;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        #canvas {
+            border-left: 1px dotted white;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        let canvas = document.getElementById("canvas");
+
+        canvas.width = document.documentElement.clientWidth //网页可见区域宽
+        canvas.height = document.documentElement.clientHeight//网页可见区域高
+        let ctx = canvas.getContext("2d");
+        ctx.fillStyle = ("white");
+        ctx.strokeStyle = 'white'
+        ctx.lineWidth = 5;
+        ctx.lineCap = "round";
+
+        let painting = false
+        let last
+
+        let isTouchDevice = 'ontouchstart' in
+            document.documentElement;
+        if (isTouchDevice) {
+            canvas.ontouchstart = (f) => {
+                let x = f.touches[0].clientX
+                let y = f.touches[0].clientY
+                last = [x, y]
+
+            }
+            canvas.ontouchmove = (f) => {
+                let x = f.touches[0].clientX
+                let y = f.touches[0].clientY
+                drawLine(last[0], last[1], x, y)
+                last = [x, y]
+
+            }
+        } else {
+
+            canvas.onmousedown = (e) => {
+                painting = true
+                last = [e.x, e.y]
+            }
+
+            canvas.onmousemove = (e) => {
+                if (painting === true) {
+                    drawLine(last[0], last[1], e.x, e.y)
+                    last = [e.x, e.y]
+
+                }
+            }
+
+            canvas.onmouseup = () => {
+                painting = false
+            }
+        }
+        function drawLine(x1, y1, x2, y2) {
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.closePath();
+            ctx.stroke();
+        }
+    </script>
+</body>

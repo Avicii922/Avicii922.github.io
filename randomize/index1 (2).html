@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<head>
+    <title>Randomize3</title>
+    <meta charset="UTF-8">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    <style>
+        @font-face {
+            font-family: 'marker';
+            src: url(../fonts/PermanentMarker-Regular.ttf);
+        }
+        @font-face {
+            font-family: 'pacfic';
+            src: url(../fonts/Pacifico-Regular.ttf);
+        }
+        /* @font-face {
+            font-family: 'heitang';
+            src: url(../heitang.ttf);
+        } */
+        @font-face {
+            font-family: 'ruslan';
+            src: url(../fonts/RuslanDisplay.ttf);
+        }
+        @font-face {
+            font-family: 'yezi';
+            src: url(../fonts/YeZiGongChangAoYeHei-2.ttf);
+        }
+        html,body {
+            width: 100%;
+            height:100%;
+            margin:0;
+            padding: 0;
+        }
+        #side {
+            width: 7vw;
+            height: 100%;
+            background-color: rgb(223, 223, 223);
+            position: fixed;
+            top: 0;
+            left: 0;
+            text-align: center;
+            transition: all 0.1s;
+            z-index: 100;
+            padding-top: 1vw;
+        }
+        #up {
+            position:fixed;
+            top: 0;
+            left: 5%;
+            height: 50%;
+            width: 95%;
+        }
+        #down {
+            position:fixed;
+            top: 34.5vw;
+            left: 15vw;
+            height: auto;
+            width: 75vw;
+            column-count: 9;
+        }
+        .sidebars {
+            margin: auto;
+            margin-bottom: 1vw;
+            width: 90%;
+            height: 6.3vw;
+            color: rgb(54, 54, 54);
+            border-radius: 1.5vw;
+
+        }
+        .sidebars p {
+            font-size: 1vw;
+            line-height: 1vw;
+            margin: 0;
+            
+        }
+        .sidebars .material-icons {
+            line-height: 4vw;
+            font-size: 3vw;
+        }
+        #title {
+            width: 34vw;
+            height: 8vw;
+            background-color: rgb(193, 248, 230);
+            border-radius: 30px;
+            position: fixed;
+            top: 7vw;
+            left: 15vw;
+            line-height: 8vw;
+            font-size: 4vw;
+            text-align: center;
+            color: rgb(39, 104, 88);
+            font-family: 'marker';
+        }
+
+        #time {
+            width: 16.5vw;
+            height: 15.25vw;
+            background-color: rgb(179, 252, 252);
+            border-radius: 30px;
+            position: fixed;
+            top: 16vw;
+            left: 15vw;
+            line-height: 6vw;
+            text-align: center;
+            font-size: 6vw;
+            color: rgb(0, 70, 110);
+            font-family: 'pacfic';
+            padding-top: 1.25vw;
+        }
+        #date {
+            width: 16.5vw;
+            height: 7.75vw;
+            background-color: rgb(253, 253, 212);
+            border-radius: 30px;
+            position: fixed;
+            top: 16vw;
+            left: 32.5vw;
+            line-height: 7.75vw;
+            font-size: 3.5vw;
+            text-align: center;
+            color: rgb(78, 87, 0);
+            font-family: 'yezi';
+        }
+        #second {
+            width: 7.75vw;
+            height: 7.75vw;
+            background-color: rgb(255, 218, 181);
+            border-radius: 30px;
+            position: fixed;
+            top: 24.75vw;
+            left: 32.5vw;
+            line-height: 7.5vw;
+            font-family: 'pacfic';
+            color: rgb(104, 107, 65);
+            font-size: 4vw;
+            text-align: center;
+        }
+        #week {
+            width: 7.75vw;
+            height: 7.75vw;
+            background-color: rgb(255, 211, 218);
+            border-radius: 30px;
+            position: fixed;
+            top: 24.75vw;
+            left: 41.25vw;
+            font-size: 7.75vw;
+            text-align: center;
+            line-height: 7.75vw;
+            color: rgb(132, 61, 150);
+        }
+        #weekname {
+            font-size: 1.7vw;
+            position: fixed;
+            top: 24.75vw;
+            left: 41.25vw;
+            width: 7.75vw;
+            height: 7.75vw;
+            padding-top: 0.4vw;
+            margin: 0;
+            font-family: 'ruslan';
+            font-size: 2.8vw;
+        }
+        #random {
+            width: 34vw;
+            height: 25.5vw;
+            background-color: rgb(222, 253, 241);
+            border-radius: 30px;
+            position: fixed;
+            top: 7vw;
+            right: 10vw;
+        }
+        .boys {
+            width: 6.2vw;
+            height: 2.2vw;
+            background-color: aliceblue;
+            border-radius: 5px;
+            margin: 0.2vw;
+            line-height: 2.2vw;
+            text-align: center;
+            font-size: 1.2vw;
+            font-family: 'yezi';
+            color: rgb(1, 62, 116);
+            
+        }
+        .girls {
+            width: 6.2vw;
+            height: 2.2vw;
+            background-color: rgb(249, 228, 252);
+            border-radius: 5px;
+            margin: 0.2vw;
+            line-height: 2.2vw;
+            text-align: center;
+            font-size: 1.2vw;
+            font-family: 'yezi';
+            color: rgb(74, 0, 104);
+            
+        }
+        #n0 {
+            margin-top: 0;
+        }
+        #button {
+            width: 10vw;
+            height: 10vw;
+            border-radius: 2vw;
+            background-color: rgb(182, 219, 253);
+            position: relative;
+            top: 11vw;
+            left: 21vw;
+            transition: all 0.8s ease-out;
+            font-size: 3vw;
+            color: rgb(1, 60, 112);
+            line-height: 10vw;
+            text-align: center;
+        }
+        #person {
+            width: 15vw;
+            height: 8vw;
+            position: fixed;
+            top: 11vw;
+            right: 26vw;
+            line-height: 8vw;
+            font-size: 3.5vw;
+            background-color: rgb(253, 211, 156);
+            border-radius: 2vw;
+            text-align: center;
+            font-family: 'yezi';
+            color: rgb(119, 67, 0);
+        }
+        #times {
+            width: 8vw;
+            height: 5vw;
+            position: fixed;
+            top: 23vw;
+            right: 33vw;
+            line-height: 5vw;
+            font-size: 2.5vw;
+            background-color: rgb(156, 253, 221);
+            border-radius: 2vw;
+            text-align: center;
+            font-family: 'marker';
+            color: rgb(2, 107, 55);
+        }
+        .material-icons {
+            line-height: 4.5vw;
+        }
+        #cover {
+            width: 93vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 7vw;
+            display: none;
+            background-color: white;
+            z-index: 99;
+        }
+        .material-icons:hover {
+            cursor: pointer;
+        }
+        #sidebg {
+            width: 5.5vw;
+            height: 5.5vw;
+            position: fixed;
+            top: 1vw;
+            left: 0.75vw;
+            background-color: rgb(177, 230, 255);
+            border-radius: 2vw;
+            z-index: -1;
+            transition: all 0.2s;
+        }
+        #clonesets {
+            display: none;
+        }
+        #sets {
+            width: 50vw;
+            position: fixed;
+            top: 5vw;
+            left: 25vw;
+            line-height:3vw;
+            padding: 4vw;
+            background-color: rgb(221, 221, 221);
+            border-radius: 4vw;
+            height: 50vw;
+        }
+        .set {
+            font-size: 2vw;
+            height: 3vw;
+            padding: 2vw;
+            border-bottom: 1px grey solid;
+        }
+        .set .material-icons {
+            float: right;
+            padding-left: 1vw;
+            padding-right: 1vw;
+            background-color: rgb(201, 230, 255);
+            border-radius: 1vw;
+        }
+        #fc {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="side">
+        <div id="sidebg"></div>
+        <div class="sidebars" id="home"><i class="material-icons">home</i><p>主页</p></div>
+        <div class="sidebars" id="settings"><i class="material-icons">settings</i><p>设置</p></div>
+        <div class="sidebars" id="log"><i class="material-icons">update</i><p>更新</p></div>
+        <div class="sidebars" id="more"><i class="material-icons">dashboard_customize</i><p>更多</p></div>
+        <div class="sidebars" id="night"><i class="material-icons">class</i><p>自习</p></div>
+        <div class="sidebars" class="funcsidebars" id="fc"><i class="material-icons">fullscreen</i><p>全屏</p></div>
+
+    </div>
+    <div id="cover">
+        
+    </div>
+    <div id="up">
+        <div id="title">Randomize</div>
+        <div id="time"></div>
+        <div id="date"></div>
+        <div id="second"></div>
+        <div id="week">
+            <p id="weekname"></p>
+    </div>
+    <div id="random">
+        <div id="button"><i class="material-icons">double_arrow</i></div>
+        <div id="person"></div>
+        <div id="times"></div>
+    </div>
+    <div id="down">
+    
+    </div>
+    <div id="clonesets">
+        <div class="set">
+            清除数据
+                <i class="material-icons" id="dump">delete</i>
+        </div>
+    </div>
+    <script>
+        function addZero(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+        };
+        //时间显示
+		setInterval(() => {
+        var d = new Date();
+        var h = addZero(d.getHours());
+        var m = addZero(d.getMinutes());
+        var s = addZero(d.getSeconds());
+        document.getElementById('time').innerHTML=h+'<br>'+m;
+        document.getElementById('second').innerHTML=s;
+        }, -1000);
+        var d = new Date();
+        var month = d.getMonth()+1;
+        var date = d.getDate();
+        var day = d.getDay();
+        document.getElementById('date').innerHTML=month+'月'+date+'日';
+        var weeks=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+        document.getElementById('weekname').innerHTML=weeks[day-1];
+        var set = document.getElementById('clonesets').innerHTML;
+        document.getElementById('clonesets').innerHTML='';
+
+        document.getElementById('home').onclick=function(){
+            document.getElementById('cover').innerHTML='';
+            document.getElementById('cover').style.display='none';
+            document.getElementById('sidebg').style.top='1vw';
+        };
+        document.getElementById('settings').onclick=function(){
+            document.getElementById('cover').innerHTML='';
+            document.getElementById('cover').style.display='block';
+            document.getElementById('cover').innerHTML='<div id="sets">'+set+'</div>';
+            document.getElementById('sidebg').style.top='8.3vw';
+            document.getElementById('dump').onclick=function(){
+                localStorage.removeItem('students');
+                window.location.reload();
+            }
+        };
+        document.getElementById('log').onclick=function(){
+            document.getElementById('cover').innerHTML='';
+            document.getElementById('cover').style.display='block';
+            document.getElementById('cover').innerHTML='<iframe src="log.html" width="100%" height="100%" name="log" frameborder="0"></iframe>'
+            document.getElementById('sidebg').style.top='15.6vw';
+        };
+
+        document.getElementById('more').onclick=function(){
+            document.getElementById('cover').innerHTML='';
+            document.getElementById('cover').style.display='block';
+            document.getElementById('cover').innerHTML='施工中......';
+            document.getElementById('sidebg').style.top='22.9vw';
+        };
+
+        document.getElementById('night').onclick=function(){
+            document.getElementById('cover').innerHTML='';
+            document.getElementById('cover').style.display='block';
+            document.getElementById('cover').innerHTML='<iframe src="night.html" width="50%" height="100%" name="night" frameborder="0"></iframe><iframe src="board.html" width="50%" height="100%" name="board" frameborder="0"></iframe>'
+            document.getElementById('sidebg').style.top='30.2vw';
+        }
+
+        document.getElementById('fc').onclick=function(){
+            if(document.getElementById('fc').innerHTML=='<i class="material-icons">fullscreen</i><p>全屏</p>'){
+                var de = document.documentElement;
+                if (de.requestFullscreen) {
+                    de.requestFullscreen();
+                } else if (de.mozRequestFullScreen) {
+                    de.mozRequestFullScreen();
+                } else if (de.webkitRequestFullScreen) {
+                    de.webkitRequestFullScreen();
+                }
+                document.getElementById('fc').innerHTML='<i class="material-icons">fullscreen_exit</i><p>退出全屏</p>'
+            }else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) { /* Safari */
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE11 */
+                    document.msExitFullscreen();
+                }
+                document.getElementById('fc').innerHTML='<i class="material-icons">fullscreen</i><p>全屏</p>'
+            }
+        };
+        // 每个加7.3
+
+
+
+        if(localStorage.students){
+            var students = JSON.parse(localStorage.students);
+
+        }else {
+            var students = {"names":["奚新晨","万欣悦","俞  乐","陈  灿","李艺萌","张星雨","侯丁卉","陈妍凌","萧雨宸","付雨萌","李琪玥","徐玉凌","曹筱然","贾文杰","吴晨晨","步云飞","王泽睿","高 翔","孙保钢","竺 越","操 鹏","朱宇攀","黄博文","张承昊","汪 顺","易 铭","陈 旭","胡 灿","潘瑞轩","李易辉","王天星","鲍 杰","路 鹏","潘靖煊","方渠帅","王 璞","卞永旭","钟 佚","宋 昊","潘佳纬","王祖鸣","鞠程伟","徐浩洋","彭 鹏","奚 望","张丁祎","鲁 帆","管嘉俊","程荣宇","王 斐","陶清扬","周子健","尤江涛","汪奕涵"],"times":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]};
+        };
+        for (var i = 0;i<15;i++){
+            document.getElementById('down').innerHTML+='<div id="n'+i+'" class = "girls" >'+students.names[i]+' '+students.times[i]+'</div>'
+        }
+        for(var i=15;i<students.names.length;i++){
+            document.getElementById('down').innerHTML+='<div id="n'+i+'" class = "boys" >'+students.names[i]+' '+students.times[i]+'</div>'
+        }
+
+        function getNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) ) + min;
+        };
+
+        var n=1;
+
+        document.getElementById('button').onclick=function(){
+            document.getElementById('button').style.transform='rotate('+360*n+'deg)';
+            n++
+            var num = getNumber(0,students.names.length-1)
+            setTimeout(() => {
+                document.getElementById('person').innerHTML=students.names[num];
+                students.times[num]++
+                document.getElementById('times').innerHTML='x'+students.times[num];
+  
+                document.getElementById('n'+num).innerHTML=students.names[num]+' '+students.times[num];
+                localStorage.students=JSON.stringify(students)
+            }, 800);
+        }
+
+
+
+    </script>
+</body>

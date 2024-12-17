@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<head>
+    <title>自习</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        @font-face {
+            font-family: 'marker';
+            src: url(../fonts/PermanentMarker-Regular.ttf);
+        }
+        @font-face {
+            font-family: 'pacfic';
+            src: url(../fonts/Pacifico-Regular.ttf);
+        }
+        /* @font-face {
+            font-family: 'heitang';
+            src: url(../heitang.ttf);
+        } */
+        @font-face {
+            font-family: 'ruslan';
+            src: url(../fonts/RuslanDisplay.ttf);
+        }
+        @font-face {
+            font-family: 'yezi';
+            src: url(../fonts/YeZiGongChangAoYeHei-2.ttf);
+        }
+        body {
+            background-color: black;
+        }
+        #time {
+            width: 33vw;
+            height: 30.5vw;
+            background-color: rgb(0, 60, 116);
+            border-radius: 30px;
+            position: fixed;
+            top: 16vw;
+            left: 15vw;
+            line-height: 12vw;
+            text-align: center;
+            font-size: 12vw;
+            color: rgb(117, 204, 255);
+            font-family: 'pacfic';
+            padding-top: 2.5vw;
+        }
+        #date {
+            width: 33vw;
+            height: 15.5vw;
+            background-color: rgb(99, 99, 0);
+            border-radius: 30px;
+            position: fixed;
+            top: 16vw;
+            left: 49vw;
+            line-height: 15.5vw;
+            font-size: 7vw;
+            text-align: center;
+            color: rgb(244, 255, 148);
+            font-family: 'yezi';
+        }
+        #second {
+            width: 15.5vw;
+            height: 15.5vw;
+            background-color: rgb(99, 49, 0);
+            border-radius: 30px;
+            position: fixed;
+            top: 32.5vw;
+            left: 50vw;
+            line-height: 15.5vw;
+            font-family: 'pacfic';
+            color: rgb(255, 219, 143);
+            font-size: 8vw;
+            text-align: center;
+        }
+        #week {
+            width: 15.5vw;
+            height: 15.5vw;
+            background-color: rgb(72, 0, 105);
+            border-radius: 30px;
+            position: fixed;
+            top: 32.5vw;
+            left: 66.5vw;
+            font-size: 15.5vw;
+            text-align: center;
+            line-height: 15.5vw;
+            color: rgb(252, 152, 255);
+        }
+        #weekname {
+            font-size: 5vw;
+            position: fixed;
+            top: 32.5vw;
+            left: 66.5vw;
+            width: 15.5vw;
+            height: 15.5vw;
+            padding-top: 0.4vw;
+            margin: 0;
+            font-family: 'ruslan';
+        }
+        #people {
+            color: rgb(255, 255, 255);
+            position: fixed;
+            top: 50vh;
+            left: 20vw;
+            width: 60vw;
+            height: 30vh;
+            background-color: rgb(0, 43, 99);
+            border-radius: 30px;
+            padding-top: 4vw;
+        }
+        #people .material-icons {
+            background-color: rgb(89, 186, 250);
+            width: 6vw;
+            height: 6vw;
+            border-radius: 3vw;
+            line-height: 6vw;
+            text-align: center;
+        }
+        #people p {
+            text-align: center;
+            font-size: 5vw;
+            font-family: 'yezi';
+            line-height: 10vw;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="up">
+        <div id="time"></div>
+        <div id="date"></div>
+        <div id="second"></div>
+        <div id="week">
+            <p id="weekname"></p>
+        </div>
+        <div id="people">
+            <p>应到:<i class="material-icons"  id="sadd">arrow_back_ios</i><span id="should">27</span><i class="material-icons"  id="sminus">arrow_forward_ios</i>人</p>
+            <p>实到:<i class="material-icons"  id="eadd">arrow_back_ios</i><span id="exact">27</span><i class="material-icons"  id="eminus">arrow_forward_ios</i>人</p>
+            <p>请假:<i class="material-icons" id="iadd">arrow_back_ios</i><span id="ill">0</span><i class="material-icons" id="iminus">arrow_forward_ios</i>人</p>
+        </div>
+    </div>
+    <script>
+                function addZero(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+        };
+        //时间显示
+		setInterval(() => {
+        var d = new Date();
+        var h = addZero(d.getHours());
+        var m = addZero(d.getMinutes());
+        var s = addZero(d.getSeconds());
+        document.getElementById('time').innerHTML=h+'<br>'+m;
+        document.getElementById('second').innerHTML=s;
+        }, -1000);
+        var d = new Date();
+        var month = d.getMonth()+1;
+        var date = d.getDate();
+        var day = d.getDay();
+        document.getElementById('date').innerHTML=month+'月'+date+'日';
+        var weeks=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+        document.getElementById('weekname').innerHTML=weeks[day-1];
+        document.getElementById('sadd').onclick=function(){
+            document.getElementById('should').innerHTML=(parseInt(document.getElementById('should').innerHTML)-1);
+        }
+        document.getElementById('sminus').onclick=function(){
+            document.getElementById('should').innerHTML=(parseInt(document.getElementById('should').innerHTML)+1);
+        }
+        document.getElementById('eadd').onclick=function(){
+            document.getElementById('exact').innerHTML=(parseInt(document.getElementById('exact').innerHTML)-1);
+        }
+        document.getElementById('eminus').onclick=function(){
+            document.getElementById('exact').innerHTML=(parseInt(document.getElementById('exact').innerHTML)+1);
+        }
+        document.getElementById('iadd').onclick=function(){
+            document.getElementById('ill').innerHTML=(parseInt(document.getElementById('ill').innerHTML)-1);
+        }
+        document.getElementById('iminus').onclick=function(){
+            document.getElementById('ill').innerHTML=(parseInt(document.getElementById('ill').innerHTML)+1);
+        }
+    </script>
+</body>

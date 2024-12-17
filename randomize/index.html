@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<head>
+    <title>Randomize</title>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-family: 'misans';
+        }
+        @font-face {
+            font-family: 'misans';
+            src: url(../MiSans-Regular.ttf) format('truetype');
+        }
+
+        #left {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 25%;
+            height: 90%;
+        }
+
+        #right {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 25%;
+            height: 90%;
+        }
+
+        #center {
+            position: fixed;
+            top: 0;
+            left: 25%;
+            width: 50%;
+            height: 90%;
+        }
+
+        #bottom {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            line-height: 30px;
+        }
+
+        #title {
+            position: relative;
+            top: 50px;
+            width: 70%;
+            height: 100px;
+            margin: auto;
+            animation: shine 10s infinite;
+            border-radius: 50px;
+            line-height: 100px;
+            font-size: 28px;
+        }
+
+        @keyframes shine {
+            0% {background-color: lightblue;}
+            20% {background-color: lightgreen;}
+            40% {background-color: lightyellow;}
+            60% {background-color: lightpink;}
+            80% {background-color: rgb(206, 142, 243);}
+            100% {background-color: lightblue;}
+        }
+
+        #run {
+            width: 35%;
+            height: 75px;
+            position: relative;
+            top: 100px;
+            font-size: 32px;
+            background-image: linear-gradient(to bottom,rgb(157, 255, 255),rgb(74, 193, 248));
+            border: 0px;
+            border-radius: 20px;
+            box-shadow: 0 10px rgb(122, 122, 122);
+        }
+
+        #run:active {
+            box-shadow:0 5px rgb(134, 134, 134);
+            transform: translateY(5px);
+        }
+
+        .namelist {
+            column-count: 3;
+            column-rule: 1px solid lightskyblue;
+            font-size: larger;
+            border-width: 2px 0 0 0;
+            border-color: lightskyblue;
+            border-style: solid;
+        }
+
+        #result {
+            background-color: rgb(0, 174, 255);
+            color: white;
+            width: 200px;
+            margin: auto;
+            height: 80px;
+            line-height: 80px;
+            position: relative;
+            top: 150px;
+            border-radius: 20px;
+            font-size: 32px;
+            transition:all ease-in-out 0.5s;
+        }
+
+        #ltitle {
+            line-height: 50px;
+        }
+        #rtitle {
+            line-height: 50px;
+        }
+
+        #more {
+            position: fixed;
+            left: 5px;
+            bottom: 10px;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .box {
+            width: 100px;
+            float: left;
+            margin: 5px;
+            background-color: rgb(221, 253, 161);
+            border-radius: 10px;
+        }
+
+        #cover {
+            background-color: rgba(197, 197, 197, 0.568);
+            width: 100%;
+            height: 9999px;
+            display: none;
+            z-index: 99;
+        }
+
+        #seter {
+            width: 50%;
+            height: 400px;
+            position: fixed;
+            top: 100px;
+            left: 25%;
+            background-color: white;
+            border-radius: 20px;
+            border: 0.5px solid rgb(104, 104, 104);
+        }
+
+        #setname {
+            width: fit-content;
+            float: left;
+            line-height: 50px;
+            padding: 10px;
+            padding-left: 20px;
+        }
+        
+        #x {
+            width: 60px;
+            float: right;
+            line-height: 50px;
+            padding: 10px;
+            padding-right: 20px;
+
+            border-radius: 0  20px 0 0;
+        }
+
+        #settitle {
+            height: 40px;
+            font-size: 24px;
+            width: 100%;
+
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div id="left">
+        <p id="ltitle">剩余</p>
+        <div class="namelist" id="survivors"></div>
+    </div>
+    <div id="center">
+        <div id="title">
+            <p>Randomize&nbsp;2.1.1</p>
+        </div>
+        <button id="run">GO!</button>
+        <div id="result"></div>
+
+
+    </div>
+    <div id="right">
+        <p id="rtitle">已抽取</p>
+        <div class="namelist" id="out"></div>
+    </div>
+    <div id="bottom" >
+         randomize&nbsp;RC2.X&nbsp;运行中<br>&copy;2024&nbsp;Involver&nbsp;All&nbsp;Rights&nbsp;Served.
+        <div id="more">
+            <div id="log" href="log.html" class="box">更新日志</div>
+            <div id="settings" class="box">设置</div>
+            <div id="about" class="box">关于</div>
+            
+            
+        </div>        
+    </div>
+
+    <!-- 设置页面 -->
+    <div id="cover">
+        <div id="seter">
+            <div id="settitle">
+                <div id="setname">设置</div>
+                <div id="x"><b>╳</b></div>
+            </div>
+            <div id="options">
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <script>
+        var survivors = [];
+        var times = [];
+        var out = [];
+        if(localStorage.survivors ){
+            stu = JSON.parse(localStorage.survivors);
+            for (var i=0; i<=stu.names.length-1;i++){
+                survivors.push(stu.names[i]);
+            };
+        }else {
+            localStorage.survivors = JSON.stringify({"names":["奚新晨","万欣悦","俞乐","陈灿","李艺萌","张星雨","侯丁卉","陈妍凌","萧雨宸","付雨萌","李琪玥","徐玉凌","曹筱然","贾文杰","吴晨晨","步云飞","王泽睿","高翔","孙保钢","竺越","操鹏","朱宇攀","黄博文","张承昊","汪顺","易铭","陈旭","胡灿","潘瑞轩","李易辉","王天星","鲍杰","路鹏","潘靖煊","方渠帅","王璞","卞永旭","钟佚","宋昊","潘佳纬","王祖鸣","鞠程伟","徐浩洋","彭鹏","奚望","张丁祎","鲁帆","管嘉俊","程荣宇","王斐","陶清扬","周子健","尤江涛","汪奕涵","任婕","孙熙宇"]});
+            stu = JSON.parse(localStorage.survivors);
+            for (var i=0; i<=stu.names.length-1;i++){
+                survivors.push(stu.names[i]);
+            };
+        };
+
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) ) + min;
+        };
+        document.getElementById('run').onclick=()=>{
+            var num = getRndInteger(0,survivors.length-1);
+
+            setTimeout(() => {
+                document.getElementById('result').style.backgroundColor='rgb(0, 174, 255)';
+            }, 500);
+
+            document.getElementById('result').innerHTML='';
+            var person = survivors.splice(num,1);
+            if(survivors.length==0){
+                survivors = ["奚新晨","万欣悦","俞乐","🍑云舒","陈灿","🍋","张⭐🌧","🐒丁卉","陈妍凌","萧雨宸","付雨萌","李琪🌛","徐玉凌","曹筱然","贾文杰","吴晨晨","步云✈","王泽睿","高翔","孙保钢","竺🌜","操🌛🌛🐣","🐷宇攀","🙃博文","张承昊","汪顺","易铭","陈旭","胡灿","刘天🐟","潘瑞轩","李易辉","王天⭐","鲍杰","路鹏","潘靖煊","方渠帅","王璞","卞永旭","钟佚","宋昊","潘佳纬","王祖鸣","鞠程伟","徐浩洋","彭鹏","奚望","张丁①","鲁帆","管嘉俊","程荣宇","王斐","陶清扬","周子健","尤江涛","汪奕涵","任婕","孙熙宇"];
+            }
+            document.getElementById('result').style.backgroundColor='white';
+            setTimeout(() => {
+            document.getElementById('result').innerHTML=person;
+            out.push(person);
+            document.getElementById('out').innerHTML=out.join('<br>');
+            document.getElementById('survivors').innerHTML=survivors.join('<br>');
+            document.getElementById('ltitle').innerHTML='剩余    '+survivors.length;
+            document.getElementById('rtitle').innerHTML='已抽取   '+out.length;
+            survivorsjson={"names":[]};
+            for (var i=0;i<survivors.length;i++){
+                survivorsjson.names.push(survivors[i]);
+            };  
+            localStorage.survivors=JSON.stringify(survivorsjson);
+
+            }, 800);
+
+
+
+
+        }
+
+        document.getElementById('survivors').innerHTML=survivors.join('<br>');
+        document.getElementById('log').onclick=function(){window.location.href='log.html'};
+        document.getElementById('settings').onclick=function(){document.getElementById('cover').style.display="block";}
+        document.getElementById('x').onclick=function(){
+            document.getElementById('cover').style.display='none';
+            document.getElementById('x').style.backgroundColor='red';
+        }
+        document.getElementById('x').onmouseover=function(){document.getElementById('x').style.backgroundColor='red';}
+        document.getElementById('x').onmouseleave=function(){document.getElementById('x').style.backgroundColor='';}
+
+    </script>
+</body>
