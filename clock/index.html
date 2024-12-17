@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Classing</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'misans';
+        }
+		body {
+			text-align: center;
+            background-color: black;
+		}
+        #time {
+            width: 35%;
+            animation: color 10s ease-in-out infinite;
+            color: rgb(125, 190, 199);
+            position:fixed;
+            top:30%;
+            left: 32.5%;
+            font-size: 70px;
+            /* border: 2px rgb(0, 160, 253) solid; */
+            border-radius: 10px;
+            animation: light 10s ease-in-out infinite;
+        }
+                @keyframes light {
+            0% {
+                box-shadow: 0 0 20px #f00;
+            }
+
+            25% {
+                box-shadow: 0 0 26px #0f0;
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgb(35, 241, 248);
+            }
+            
+            75% {
+                box-shadow: 0 0 26px #0f0;
+            }
+
+            100% {
+                box-shadow: 0 0 20px #f00;
+            }
+        }
+        #box2 {
+            width: 15%;
+            height: 110px;
+            position: fixed;
+            bottom: 10%;
+            left: 32.5% ;
+            border: 1px white ;
+            border-style:dashed solid solid solid;
+            border-radius: 10px;
+            animation: light 20s ease-in-out 0.5s infinite;
+            font-size: 24px;
+            overflow: hidden;
+        }
+        #date {
+            background-color: white;
+            width: 100%;
+            height: 70px;
+            text-align: center;
+            line-height: 33px;
+            border-radius: 0 0 10px 10px;
+        }
+        #month {
+            color: aliceblue;
+            border-color: white;
+            border-width: 0 0 5px 0;
+            border-style: solid;
+            width: 100%;
+            line-height: 40px;
+        }
+
+        #class {
+            color: white;
+            width: 15%;
+            height: 110px;
+            border: 2px white solid;
+            border-radius: 10px;
+            position: fixed;
+            bottom: 10%;
+            right: 32.5%;
+            animation: light 20s ease-in-out 0.5s infinite;
+            font-size: 24px;
+            display: inline;
+            overflow: hidden;
+        }
+
+        #classtitle {
+            font-size: 20px;
+            line-height: 30px;
+            border-bottom: 1px white solid;
+        }
+        #now {
+            background-color: rgb(18, 134, 18);
+            width: 60%;
+            height: 40px;
+            float: left;
+            line-height: 40px;
+        }
+        #next {
+            background-color: white;
+            width: 60%;
+            height: 40px;
+            float: left;
+            border-radius: 0 0 0 10px;
+            color: black;
+            line-height: 40px;
+        }
+        #tl {
+            font-size: 19px;
+            text-align: center;
+        }
+
+        @font-face {
+            font-family: 'misans';
+            src: url('MiSans-Regular.ttf') format('truetype');
+        }
+	</style>
+</head>
+<body>
+
+<!-- 时间模块 -->
+    <div id="time">
+	    <p id="datetime"></p>
+    </div>
+
+
+
+
+<!-- 课表 -->
+    <div id="class">
+        <div id="classtitle">课程表</div>
+        <div id="now"></div>
+        <div id="next"></div>
+        <div id="tl"></div>
+    </div>
+
+
+
+<!-- 日期模块 -->
+    <div id="box2">
+        <div id="month"></div>
+        <div id="date"></div>
+    </div>
+
+
+<!-- 设置面板 -->
+
+	<script>
+        //补0
+        function addZero(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+        };
+        //时间显示
+		setInterval(() => {
+        var d = new Date();
+        var x = document.getElementById("datetime");
+        var h = addZero(d.getHours());
+        var m = addZero(d.getMinutes());
+        var s = addZero(d.getSeconds());
+        x.innerHTML = h + ":" + m + ":" + s;
+        }, -1000);
+        var d = new Date();
+        var month = d.getMonth()+1;
+        var date = d.getDate();
+        var day = d.getDay();
+        var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        document.getElementById('month').innerHTML=month+'月';
+        document.getElementById('date').innerHTML=date+'<br>'+days[day];
+
+        var elem = document.documentElement;
+        var lessons=[];
+        switch(day) {
+            case 1 :
+                lessons=["英语","生物","语文","化学","物理","物理","数学","班会"];
+                break;
+            case 2 :
+                lessons=["英语","语文","数学","数学","体育","物理","生物","化学"];
+                break;
+            case 3 :
+                lessons=["语文","物理","英语","英语","化学","生物","数学","自习"];
+                break;
+            case 4 :
+                lessons=["数学","数学","化学","生物","体育","语文","语文","英语"];
+                break;
+            case 5 :
+                lessons=["物理","语文","英语","数学","音乐","生物","化学","综合"];
+                break;
+            case 6 :
+                lessons=["化学","生物","物理","物理","英语","语文","数学","数学"];
+                
+        }
+        setInterval(()=>{
+            var d=new Date();
+            var t=d.getHours()*100+d.getMinutes();
+            var now = "未知"
+            var next = '未知';
+            var tl =undefined;
+            if(t>=750 && t<835){
+                now=lessons[0];
+                next = lessons[1];
+                tl = 515-d.getHours()*60-d.getMinutes();
+            }else if (t>=845 && t<930 ){
+                next = lessons[2];
+                now = lessons[1];
+                tl = 570-d.getHours()*60-d.getMinutes();
+            }else if (t>=1000 && t<1045 ){
+                next = lessons[3];
+                now = lessons[2];
+                tl = 645-d.getHours()*60-d.getMinutes();
+            }else if (t>=1055 && t<1140 ){
+                next = lessons[4];
+                now = lessons[3];
+                tl = 700-d.getHours()*60-d.getMinutes();
+            }else if (t>=1400 && t<1445 ){
+                now = lessons[4];
+                next = lessons[5];
+                tl = 885-d.getHours()*60-d.getMinutes();
+            }else if (t>=1500 && t<1545 ){
+                next = lessons[6];
+                now = lessons[5];
+                tl = 945-d.getHours()*60-d.getMinutes();
+            }else if (t>=1555 && t<1640 ){
+                next = lessons[7];
+                now = lessons[6];
+                tl = 1000-d.getHours()*60-d.getMinutes();
+            }else if (t>=1645 && t<1730 ){
+                now = lessons[7];
+                next = '無';
+                tl = 1050-d.getHours()*60-d.getMinutes();
+            }else if (t>1730){
+                now = '放学啦';
+                next ="";
+            }else if (t>=750 && t<=845 ){
+                now = '下课';
+                next = lessons[1]
+            }else if (t>=930 && t<=1000 ){
+                now = '下课';
+                next = lessons[2]
+            }else if (t>=1045 && t<=1055 ){
+                now = '下课';
+                next = lessons[3]
+            }else if (t>=1140 && t<=1400 ){
+                now = '放学啦';
+                next = lessons[4]
+            }else if (t>=1445 && t<=1500 ){
+                now = '下课';
+                next = lessons[5]
+            }else if (t>=1545 && t<=1555 ){
+                now = '下课';
+                next = lessons[6]
+            }else if (t>=1640 && t<=1645 ){
+                now = '下课';
+                next = lessons[7]
+            };
+            document.getElementById('now').innerHTML=now;
+            document.getElementById('next').innerHTML=next;
+            if (tl!=undefined){
+                document.getElementById('tl').innerHTML='还有<br>'+tl+'<br>分钟';
+                document.getElementById('tl').style.lineHeight='26.6px'
+            }else{
+                document.getElementById('tl').innerHTML='<i class="material-icons">mood</i>'
+                document.getElementById('tl').style.lineHeight='80px'
+                
+            }
+
+        },-60000);
+
+
+
+
+        // 全屏设置模块
+        document.getElementById('fc').addEventListener("click",()=>{
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) { /* Safari */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE11 */
+                elem.msRequestFullscreen();
+            }
+            document.getElementById('fc').style.display='none';
+            document.getElementById('ofc').style.display='inline';
+      });
+        document.getElementById('ofc').addEventListener("click",()=>{
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) { /* Safari */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { /* IE11 */
+                document.msExitFullscreen();
+            }
+        document.getElementById('fc').style.display='inline';
+        document.getElementById('ofc').style.display='none';
+
+        })
+        
+        
+
+
+
+
+		// // 计算高考倒计时
+		// var examDate = new Date("2023-06-07"); // 高考日期
+		// var now = new Date();
+		// var timeDiff = examDate.getTime() - now.getTime(); // 计算时间差，单位为毫秒
+		// var daysLeft = Math.floor(timeDiff / (1000 * 60 * 60 * 24)); // 计算剩余天数
+		// document.getElementById("countdown").innerHTML = "距离高考还有 " + daysLeft + " 天";
+	</script>
+</body>
+</html>
